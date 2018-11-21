@@ -5,12 +5,26 @@ November 21, 2018
 
 Welcome to the repository! Here you'll find all the files and associated material for [Howework 8](http://stat545.com/Classroom/assignments/hw08/hw08.html).
 
-For this assignment, I chose to modify Deans Attali's [tutorial](https://deanattali.com/blog/building-shiny-apps-tutorial/) and [code](https://deanattali.com/blog/building-shiny-apps-tutorial/#12-final-shiny-app-code) in order to create my own version of the the British Columbia Liquor store Shiny app.
+### Overview
+
+For this assignment, I chose to modify Dean Attali's [tutorial](https://deanattali.com/blog/building-shiny-apps-tutorial/) and [code](https://deanattali.com/blog/building-shiny-apps-tutorial/#12-final-shiny-app-code) in order to create my own version of the the British Columbia Liquor store Shiny app. The [original data set](http://www.opendatabc.ca/dataset/bc-liquor-store-product-price-list-current-prices) is available from [OpenDataBC](http://www.opendatabc.ca/).
+
+### The Shiny app
 
 My app is hosted on [shinyapps.io](https://www.shinyapps.io), and available [**here**](https://smc-test-shiny.shinyapps.io/British_Columbia_Liquor_Prices/).
 
+#### Description
+
+Like Dean's original tool, this app filters data about different types of BC Liquor. However, the modified version has a number of additional features available to the user:
+
+1.  **DT Tables:** This provides a search bar and interactive sorting that makes it easy to quickly isolate a record based on a specific keyword or phrase.
+
+2.  **Images!** There is now a nice image of different types of liquor.
+
+### The code
+
 If you would like to reference or reproduce the modified code behind this app, you can find it in the repository [here](https://github.com/STAT545-UBC-students/hw08-schignel/blob/master/bcl/app.R).
 
-Best of luck with your selection. Cheers!
+**Best of luck with your selection. Cheers!**
 
 ![](https://media.giphy.com/media/RLfDm4jtYWt68/giphy.gif)
