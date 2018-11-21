@@ -1,6 +1,7 @@
 library(shiny)
 library(ggplot2)
 library(dplyr)
+library(DT)
 
 bcl <- read.csv("bcl-data.csv", stringsAsFactors = FALSE)
 
@@ -15,9 +16,10 @@ ui <- fluidPage(
       uiOutput("countryOutput")
     ),
     mainPanel(
+      img(src='myImage.png', align = "right"),
       plotOutput("coolplot"),
       br(), br(),
-      tableOutput("results")
+      DTOutput("results") # use DT alias function to avoid conflict with shiny::DataTableOutput()
     )
   )
 )
@@ -50,7 +52,7 @@ server <- function(input, output) {
       geom_histogram()
   })
 
-  output$results <- renderTable({
+  output$results <- renderDT({ # use DT alias function to avoid conflict with shiny::renderDataTable()
     filtered()
   })
 }
