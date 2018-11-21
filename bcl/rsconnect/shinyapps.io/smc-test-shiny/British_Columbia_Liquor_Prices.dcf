@@ -1,0 +1,12 @@
+name: British_Columbia_Liquor_Prices
+title: British_Columbia_Liquor_Prices
+username:
+account: smc-test-shiny
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 584031
+bundleId: 1713791
+url: https://smc-test-shiny.shinyapps.io/British_Columbia_Liquor_Prices/
+when: 1542834835.30471
+asMultiple: FALSE
+asStatic: FALSE
