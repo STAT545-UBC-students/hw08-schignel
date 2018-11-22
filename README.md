@@ -21,6 +21,10 @@ Like Dean's original tool, this app filters data about different types of BC Liq
 
 2.  **Images!** There is now a nice image of different types of liquor.
 
+3.  **CSS Styling:** I added a CSS theme called "Journal" from [Bootswatch.com](https://bootswatch.com/) to make the app look more professional.
+
+4.  **Downloads:** There is a now a button that allows the user to download the data as .csv file, based on the current filters applied. The .csv file is labeled with the current date in order to promote data provenance.
+
 ### The code
 
 If you would like to reference or reproduce the modified code behind this app, you can find it in the repository [here](https://github.com/STAT545-UBC-students/hw08-schignel/blob/master/bcl/app.R).

@@ -5,8 +5,8 @@ account: smc-test-shiny
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 584031
-bundleId: 1714101
+bundleId: 1714129
 url: https://smc-test-shiny.shinyapps.io/British_Columbia_Liquor_Prices/
-when: 1542845250.89345
+when: 1542847473.60758
 asMultiple: FALSE
 asStatic: FALSE

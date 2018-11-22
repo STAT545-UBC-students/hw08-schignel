@@ -5,7 +5,7 @@ library(DT)
 
 bcl <- read.csv("bcl-data.csv", stringsAsFactors = FALSE)
 
-ui <- fluidPage(
+ui <- fluidPage(theme = "bootstrap.css", # Add CSS Styling
   titlePanel("BC Liquor Store prices"),
   sidebarLayout(
     sidebarPanel(
@@ -17,9 +17,12 @@ ui <- fluidPage(
     ),
     mainPanel(
       img(src='BCL_big.png', align = "right"),
+      downloadLink("downloadData", "Download"),
       plotOutput("coolplot"),
       br(), br(),
+      br(), br(),
       DTOutput("results"), # use DT alias function to avoid conflict with shiny::DataTableOutput()
+      br(), br(),
       img(src='liquor_bar.png', align = "right")
     )
   )
@@ -56,6 +59,15 @@ server <- function(input, output) {
   output$results <- renderDT({ # use DT alias function to avoid conflict with shiny::renderDataTable()
     filtered()
   })
+  
+  output$downloadData <- downloadHandler(
+    filename = function() {
+      paste("data-", Sys.Date(), ".csv", sep="")
+    },
+    content = function(file) {
+      write.csv(filtered(), file)
+    }
+  )
 }
 
 shinyApp(ui = ui, server = server)
