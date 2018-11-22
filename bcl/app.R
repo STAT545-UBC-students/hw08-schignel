@@ -9,7 +9,6 @@ ui <- fluidPage(
   titlePanel("BC Liquor Store prices"),
   sidebarLayout(
     sidebarPanel(
-      img(src='liquor_bar.png', align = "left"),
       sliderInput("priceInput", "Price", 0, 100, c(25, 40), pre = "$"),
       radioButtons("typeInput", "Product type",
                   choices = c("BEER", "REFRESHMENT", "SPIRITS", "WINE"),
@@ -20,7 +19,8 @@ ui <- fluidPage(
       img(src='BCL_big.png', align = "right"),
       plotOutput("coolplot"),
       br(), br(),
-      DTOutput("results") # use DT alias function to avoid conflict with shiny::DataTableOutput()
+      DTOutput("results"), # use DT alias function to avoid conflict with shiny::DataTableOutput()
+      img(src='liquor_bar.png', align = "right")
     )
   )
 )
