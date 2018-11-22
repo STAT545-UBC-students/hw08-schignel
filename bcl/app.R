@@ -1,14 +1,21 @@
+# Load required libraries
 library(shiny)
 library(ggplot2)
 library(dplyr)
 library(DT)
 
+# Bring in the data
 bcl <- read.csv("bcl-data.csv", stringsAsFactors = FALSE)
 
+# Define the user interface
 ui <- fluidPage(theme = "bootstrap.css", # Add CSS Styling
   titlePanel("BC Liquor Store prices"),
   sidebarLayout(
     sidebarPanel(
+      h2("Filters"),
+      "Use the options below to filter the data and find your preffered drink.
+      You can download the filtered dataset by pressing the 'Download Data' button.",
+      br(), br(),
       sliderInput("priceInput", "Price", 0, 100, c(25, 40), pre = "$"),
       radioButtons("typeInput", "Product type",
                   choices = c("BEER", "REFRESHMENT", "SPIRITS", "WINE"),
@@ -16,10 +23,10 @@ ui <- fluidPage(theme = "bootstrap.css", # Add CSS Styling
       uiOutput("countryOutput")
     ),
     mainPanel(
+      downloadButton("downloadData", "Download Data"),
       img(src='BCL_big.png', align = "right"),
-      downloadLink("downloadData", "Download"),
       plotOutput("coolplot"),
-      br(), br(),
+      br(), br(), # Adding line breaks
       br(), br(),
       DTOutput("results"), # use DT alias function to avoid conflict with shiny::DataTableOutput()
       br(), br(),
@@ -27,14 +34,14 @@ ui <- fluidPage(theme = "bootstrap.css", # Add CSS Styling
     )
   )
 )
-
+# Define the server settings
 server <- function(input, output) {
   output$countryOutput <- renderUI({
     selectInput("countryInput", "Country",
                 sort(unique(bcl$Country)),
                 selected = "CANADA")
   })  
-  
+  # Set up data set to be filtered based on widget
   filtered <- reactive({
     if (is.null(input$countryInput)) {
       return(NULL)
@@ -47,19 +54,22 @@ server <- function(input, output) {
              Country == input$countryInput
       )
   })
-  
+  # Set up output plot
   output$coolplot <- renderPlot({
     if (is.null(filtered())) {
       return()
     }
     ggplot(filtered(), aes(Alcohol_Content)) +
-      geom_histogram()
+      geom_histogram(binwidth = 0.2, color = "dark blue") +
+      ylab("Count") +
+      xlab("Alcohol Content") +
+      theme_bw()
   })
-
+  # Set up output table
   output$results <- renderDT({ # use DT alias function to avoid conflict with shiny::renderDataTable()
     filtered()
   })
-  
+  # Set up download button
   output$downloadData <- downloadHandler(
     filename = function() {
       paste("data-", Sys.Date(), ".csv", sep="")
