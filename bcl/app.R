@@ -20,6 +20,7 @@ ui <- fluidPage(theme = "bootstrap.css", # Add CSS Styling
       checkboxGroupInput("typeInput", "Product type",
                   choices = c("BEER", "REFRESHMENT", "SPIRITS", "WINE"),
                   selected = "WINE"),
+      sliderInput("sweetnessInput", "Product sweetness", 0, 10, c(0, 10)),
       uiOutput("countryOutput"),
       br(), br(),
       h4("Note:"), 
@@ -54,7 +55,8 @@ server <- function(input, output) {
       filter(Price >= input$priceInput[1],
              Price <= input$priceInput[2],
              Type == input$typeInput,
-             Country == input$countryInput
+             Country == input$countryInput,
+             Sweetness == input$sweetnessInput
       )
   })
   # Set up output plot

@@ -25,7 +25,9 @@ Like Dean's original tool, this app filters data about different types of BC Liq
 
 4.  **Check boxes:** I changed the radio buttons to check boxes to allow users to select multiple drink types.
 
-5.  **Downloads:** There is a now a button that allows the user to download the data as .csv file, based on the current filters applied. The .csv file is labeled with the current date to promote data provenance.
+5.  **Sweetness Slider:** I added a second slider widget to allow the user to filter by sweetness.
+
+6.  **Downloads:** There is a now a button that allows the user to download the data as .csv file, based on the current filters applied. The .csv file is labeled with the current date to promote data provenance.
 
 ### The code
 
