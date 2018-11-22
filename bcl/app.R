@@ -13,14 +13,17 @@ ui <- fluidPage(theme = "bootstrap.css", # Add CSS Styling
   sidebarLayout(
     sidebarPanel(
       h2("Filters"),
-      "Use the options below to filter the data and find your preffered drink.
+      "Use the options below to filter the data and find your preffered drink!
       You can download the filtered dataset by pressing the 'Download Data' button.",
       br(), br(),
       sliderInput("priceInput", "Price", 0, 100, c(25, 40), pre = "$"),
-      radioButtons("typeInput", "Product type",
+      checkboxGroupInput("typeInput", "Product type",
                   choices = c("BEER", "REFRESHMENT", "SPIRITS", "WINE"),
                   selected = "WINE"),
-      uiOutput("countryOutput")
+      uiOutput("countryOutput"),
+      br(), br(),
+      h4("Note:"), 
+      "This app is an augmented version of the app produced by Dean Attali (https://deanattali.com), and public domain data from OpenDataBC.ca. All images used are in the public domain."
     ),
     mainPanel(
       downloadButton("downloadData", "Download Data"),
